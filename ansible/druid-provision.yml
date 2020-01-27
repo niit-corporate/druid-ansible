@@ -52,8 +52,8 @@
         db: graphite
         password: "{{ dp_vault_druid_postgress_graphite_pass }}"     
   tasks:
-    - name: Ensure database is created
-      postgresql_db: name="{{ item.name }}" \
+      - name: Ensure database is created
+        postgresql_db: name="{{ item.name }}" \
                 login_host="{{ postgres.db_url }}" \
                 port="{{ postgres.db_port }}" \
                 login_user="{{ postgres.db_admin_user }}" \
@@ -62,8 +62,8 @@
                 state=present
       with_items: "{{ postgresql_databases }}"
 
-    - name: Ensure user has access to the database
-      postgresql_user: name="{{ item.name }}" \
+     - name: Ensure user has access to the database
+       postgresql_user: name="{{ item.name }}" \
                   password="{{ item.password }}" \
                   no_password_changes=true \
                   priv=ALL \
@@ -81,8 +81,7 @@
   become: yes
   roles:
     - {role: druid_graphite}
--
-  name: Install role druid
+- name: Install role druid
   hosts: druid
   become: yes
   roles:
@@ -91,3 +90,4 @@
     - {role: analytics-druid, when: "'broker' in group_names", druid_role: 'broker', service: 'broker'}
     - {role: analytics-druid, when: "'historical' in group_names", druid_role: 'historical', service: 'historical'}
     - {role: analytics-druid, when: "'middlemanager' in group_names", druid_role: 'middlemanager', service: 'middleManager' }
+
