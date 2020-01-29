@@ -14,24 +14,24 @@
   vars:
     zookeeper_group: "{{ groups['druid-zookeeper'] }}"
 
-#-
-#  name: Install postgres on druid cluster
-#  hosts: druid-postgres
-#  vars_files:
-#    - "{{inventory_dir}}/secrets.yml"
-#  become: yes
-#  roles:
-#    - {role: postgres-provision }
-#  vars:
-#    postgres_address_space: "0.0.0.0/0"
-#    postgresql_databases:
-#      - name: druid
-#      - name: graphite
-#    postgresql_users:
-#      - name: druid
-#        password: "{{ dp_vault_druid_postgress_pass }}"
-#      - name: graphite 
-#        password: "{{ dp_vault_druid_postgress_graphite_pass }}"
+-
+  name: Install postgres on druid cluster
+  hosts: druid-postgres
+  vars_files:
+    - "{{inventory_dir}}/secrets.yml"
+  become: yes
+  roles:
+    - {role: postgres-provision }
+  vars:
+    postgres_address_space: "0.0.0.0/0"
+    postgresql_databases:
+      - name: druid
+      - name: graphite
+    postgresql_users:
+      - name: druid
+        password: "{{ dp_vault_druid_postgress_pass }}"
+      - name: graphite 
+        password: "{{ dp_vault_druid_postgress_graphite_pass }}"
 
 
 # Create postgres databases and users
