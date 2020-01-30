@@ -87,7 +87,7 @@
 
 
 - name: Setup psqldb
-  command: /usr/bin/python manage.py syncdb --noinput chdir=/opt/graphite/webapp/graphite creates=/opt/graphite/storage/graphite.db --with-openssl
+  command: /usr/bin/python manage.py syncdb --noinput chdir=/opt/graphite/webapp/graphite creates=/opt/graphite/storage/graphite.db
   register: psql_setup
   become_user: "{{ apache_user }}"
 
