@@ -86,10 +86,10 @@
   when: "permissions.stat.pw_name != apache_user"
 
 
-- name: Setup psqldb
-  command: /usr/bin/python manage.py syncdb --noinput chdir=/opt/graphite/webapp/graphite creates=/opt/graphite/storage/graphite.db
-  register: psql_setup
-  become_user: "{{ apache_user }}"
+#- name: Setup psqldb
+ # command: /usr/bin/python manage.py syncdb --noinput chdir=/opt/graphite/webapp/graphite creates=/opt/graphite/storage/graphite.db
+ # register: psql_setup
+  #become_user: "{{ apache_user }}"
 
 
 - name: Wait for psql_setup to be setup
