@@ -24,7 +24,7 @@
         "lodash": "^4.17.15",
         "request": "^2.88.0",
         "mocha": "^6.2.2",
-        "log4js": "^6.1.0",
+        "log4js": "^6.4.0",
         "moment": "^2.24.0"
     },
     "devDependencies": {
